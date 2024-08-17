@@ -40,10 +40,11 @@ func main() {
 	}
 
 	if *config.SystemProxy {
-		if err := util.SetOsProxy(*config.Port); err != nil {
-			log.Fatal("error while changing proxy settings")
-		}
+ 		if err := util.SetOsProxy(*config.Port); err != nil {
+        	log.Fatalf("Error while changing proxy settings: %v", err)
+      		}
 	}
+
 
 	go pxy.Start()
 
